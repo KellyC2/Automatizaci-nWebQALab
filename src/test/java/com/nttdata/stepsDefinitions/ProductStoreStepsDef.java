@@ -1,6 +1,7 @@
 package com.nttdata.stepsDefinitions;
 
 import com.nttdata.steps.CategorySteps;
+import com.nttdata.steps.HomeSteps;
 import com.nttdata.steps.ProductSteps;
 import io.cucumber.java.PendingException;
 import io.cucumber.java.es.Cuando;
@@ -18,6 +19,9 @@ public class ProductStoreStepsDef {
     }
     private ProductSteps productSteps (WebDriver driver){
         return new ProductSteps(driver);
+    }
+    private HomeSteps homeSteps(WebDriver driver) {
+        return new HomeSteps(driver);
     }
 
     @Cuando("navego a la categoría: {string} y subcategoría: {string}")
@@ -77,6 +81,34 @@ public class ProductStoreStepsDef {
     public void vuelvoAValidarElCálculoDePreciosEnElCarrito() {
         driver = getDriver();
         productSteps(driver).validarCalculoPrecioCarrito();
+        screenShot();
+    }
+
+    @Cuando("busco la categoría {string}")
+    public void buscoLaCategoría(String categoria) {
+        driver = getDriver();
+        homeSteps(driver).buscarCategoria(categoria);
+        screenShot();
+    }
+
+    @Entonces("valido el título de resultados de búsqueda")
+    public void validoElTítuloDeResultadosDeBúsqueda() {
+        driver = getDriver();
+        homeSteps(driver).validarTituloResultadosBusqueda();
+        screenShot();
+    }
+
+    @Y("valido el mensaje {string}")
+    public void validoElMensaje(String mensajeEsperado) {
+        driver = getDriver();
+        homeSteps(driver).validarMensajeSinResultados(mensajeEsperado);
+        screenShot();
+    }
+
+    @Y("no debo continuar con el flujo de compra")
+    public void noDeboContinuarConElFlujoDeCompra() {
+        driver = getDriver();
+        homeSteps(driver).validarQueNoExistanProductos();
         screenShot();
     }
 }

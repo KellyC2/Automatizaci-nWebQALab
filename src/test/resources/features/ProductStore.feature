@@ -6,7 +6,7 @@ Característica: Product - Store
   Quiero validar la autenticación y navegación de la tienda
   Para comprobar el funcionamiento del catálogo y del proceso de compra
 
-  @Test @smoke @regression @compra
+  @test @smoke @regression @compra
   Escenario: Validación del precio de un producto
     Dado estoy en la página de la tienda
     Cuando me logueo con mi usuario: "kellycondori@gmail.com" y contraseña: "H0l@NttD@t@"
@@ -29,7 +29,7 @@ Característica: Product - Store
       | kellycondoriInvalido@gmail.com | H0l@NttD@t@        |
       | kellycondori@gmail.com         | ContraseñaInvalida |
 
-  @regression @categoria
+  @test @regression @categoria
   Escenario: Validar búsqueda de una categoría inexistente
     Dado estoy en la página de la tienda
     Cuando busco la categoría "Autos"
