@@ -31,11 +31,39 @@ public class LoginStepsDef {
         screenShot();
     }
 
-    @Y("me logueo con mi usuario: {string} y constraseña: {string}")
-    public void meLogueoConMiUsuarioYConstraseña(String email, String contraseña) {
+    @Cuando("me logueo con mi usuario: {string} y contraseña: {string}")
+    public void meLogueoConMiUsuarioYContraseña(String email, String contraseña) {
+
+        driver = getDriver();
+
         homeSteps(driver).clickLoginLink();
         loginSteps(driver).ingresoUsuarioYContraseña(email, contraseña);
+
         screenShot();
     }
 
+    @Entonces("valido que la autenticación sea rechazada")
+    public void validoQueLaAutenticaciónSeaRechazada() {
+        driver = getDriver();
+
+        loginSteps(driver).validarRechazoAutenticacion();
+
+        screenShot();
+    }
+
+
+    @Y("permanezco en la pantalla de inicio de sesión")
+    public void permanezcoEnLaPantallaDeInicioDeSesión() {
+        driver = getDriver();
+
+        if (!loginSteps(driver).isLoginFormDisplayed()) {
+            throw new AssertionError(
+                    "El usuario no permanece en la pantalla de inicio de sesión"
+            );
+        }
+
+        System.out.println("Validación exitosa: permanece en login");
+
+        screenShot();
+    }
 }

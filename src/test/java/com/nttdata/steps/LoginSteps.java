@@ -45,4 +45,22 @@ public class LoginSteps {
                 ExpectedConditions.visibilityOfElementLocated(LoginPage.emailInput)
         ).isDisplayed();
     }
+
+    public void validarRechazoAutenticacion() {
+
+        String mensajeObtenido = wait.until(
+                ExpectedConditions.visibilityOfElementLocated(LoginPage.errorMessage)
+        ).getText().trim();
+
+        String mensajeEsperado = "Error de autenticación.";
+
+        if (!mensajeObtenido.equals(mensajeEsperado)) {
+            throw new AssertionError(
+                    "El mensaje de error no es el esperado. " +
+                            "Mensaje obtenido: " + mensajeObtenido
+            );
+        }
+
+        System.out.println("Validación exitosa: " + mensajeObtenido);
+    }
 }

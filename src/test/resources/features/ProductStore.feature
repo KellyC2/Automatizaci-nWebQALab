@@ -9,8 +9,8 @@ Característica: Product - Store
   @Test @smoke @regression @compra
   Escenario: Validación del precio de un producto
     Dado estoy en la página de la tienda
-    Y me logueo con mi usuario: "kellycondori@gmail.com" y constraseña: "H0l@NttD@t@"
-    Cuando navego a la categoría: "Clothes" y subcategoría: "Men"
+    Cuando me logueo con mi usuario: "kellycondori@gmail.com" y contraseña: "H0l@NttD@t@"
+    Y navego a la categoría: "Clothes" y subcategoría: "Men"
     Y agrego 2 unidades del primer producto al carrito
     Entonces valido en el popup la confirmación del producto agregado
     Y valido en el popup que el monto total sea calculado correctamente
@@ -18,16 +18,16 @@ Característica: Product - Store
     Entonces valido el título de la página del carrito
     Y vuelvo a validar el cálculo de precios en el carrito
 
-    @regression @login
-  Escenario: Validación de autenticación con credenciales inválidas
+  @test @regression @login
+  Esquema del escenario: Validación de autenticación con credenciales inválidas
     Dado estoy en la página de la tienda
-    Cuando me logueo con mi usuario:"<usuario>" y contraseña: "<contraseña>"
+    Cuando me logueo con mi usuario: "<usuario>" y contraseña: "<contraseña>"
     Entonces valido que la autenticación sea rechazada
     Y permanezco en la pantalla de inicio de sesión
     Ejemplos:
-      | usuario                         | contraseña          |
-      | kellycondoriInvalido@gmail.com  | H0l@NttD@t@         |
-      | kellycondori@gmail.com          | ContraseñaInvalida  |
+      | usuario                        | contraseña         |
+      | kellycondoriInvalido@gmail.com | H0l@NttD@t@        |
+      | kellycondori@gmail.com         | ContraseñaInvalida |
 
   @regression @categoria
   Escenario: Validar búsqueda de una categoría inexistente
